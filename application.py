@@ -23,8 +23,6 @@ application = Flask(__name__)
 def download_data():
     product_code_list = request.args.get('product-code-list').split('|')
 
-    print(product_code_list)
-
     strIO = io.BytesIO()
 
     if len(product_code_list) >= 1 and product_code_list[0] != '':
@@ -48,10 +46,8 @@ def download_data():
 
     strIO.seek(0)
 
-    strIO.close()
-
     return send_file(
-        binary_data,
+        strIO,
         attachment_filename=filename,
         as_attachment=True
     )
