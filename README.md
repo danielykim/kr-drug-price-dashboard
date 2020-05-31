@@ -4,7 +4,7 @@ This repository contains the following modules:
 - [Dashboard](http://kr-drug-price-dashboard.eba-p9n9y8af.ap-northeast-2.elasticbeanstalk.com/). Feel free to try it.
 
 
-## How to run?
+## How to run it?
 ```
 $ git clone https://github.com/danielykim/kr-drug-price-dashboard
 $ pip install virtualenv
