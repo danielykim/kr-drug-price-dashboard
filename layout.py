@@ -185,16 +185,22 @@ def initialize_layout():
             html.Div(children=[
                 html.Ul(children=[
                     html.Li(children=[
+                        'Data Source:',
+                        html.A(
+                            href='https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA030014050000',
+                            children=['건강보험심사평가원 (HIRA) 약제급여목록표'])
+                    ]),
+                    html.Li(children=[
                         'Author:',
                         html.A(
                             href='https://www.linkedin.com/in/danielyounghokim/',
                             children=['Daniel Y Kim, PhD'])
                     ]),
                     html.Li(children=[
-                        'Data Source:',
+                        'Source Code:',
                         html.A(
-                            href='https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA030014050000',
-                            children=['건강보험심사평가원 약제급여목록표'])
+                            href='https://github.com/danielykim/kr-drug-price-dashboard',
+                            children=['GitHub repository'])
                     ]),
                 ])
             ])
