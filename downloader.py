@@ -57,7 +57,7 @@ def download(brdBltNo):
 
         year = date_str[:4]
 
-        excel_file_dir = f'data-raw/{year}'
+        excel_file_dir = Path(data_raw_dir, year)
 
         Path(excel_file_dir).mkdir(parents=True, exist_ok=True)
 

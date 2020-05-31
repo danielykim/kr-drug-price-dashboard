@@ -16,6 +16,7 @@ import index_string
 
 
 
+# Variable name below should be `application` for AWS Elastic Beanstalk
 application = Flask(__name__)
 
 
@@ -105,7 +106,6 @@ def create_app():
         return fig, tab, href
 
 
-# Variable name below should be `application` for AWS Elastic Beanstalk
 create_app()
 
 

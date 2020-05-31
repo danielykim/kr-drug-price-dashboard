@@ -35,7 +35,7 @@ PARAMS = {
 # 2016-07-01
 brdBltNo_start = 1576
 
-data_raw_dir = Path('data-raw/')
+data_raw_dir = Path('data-raw')
 data_cleaned_dir = Path('data-cleaned')
 
 data_compound_path = Path(data_cleaned_dir, 'compound.pickle')
