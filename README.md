@@ -1,7 +1,7 @@
 ## Intro
 This repository contains the following modules:
 - South Korea drug price data manipulation
-- Dashboard
+- [Dashboard](http://kr-drug-price-dashboard.eba-p9n9y8af.ap-northeast-2.elasticbeanstalk.com/). Feel free to try it.
 
 
 ## How to run?
