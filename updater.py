@@ -2,7 +2,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from config import data_raw_dir, data_cleaned_dir, MAX_NUMBER_OF_MONTHS
+from config import data_raw_dir, data_cleaned_dir
+from config import MAX_NUMBER_OF_MONTHS, brdBltNo_latest
 from config import data_compound_path, data_product_path, data_price_path
 
 import downloader
@@ -11,7 +12,7 @@ import tools
 
 
 def check():
-    brdBltNo = tools.get_top_brdBltNo()
+    brdBltNo = brdBltNo_latest
 
     downloader.download(brdBltNo)
 

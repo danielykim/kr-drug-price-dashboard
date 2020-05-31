@@ -143,10 +143,23 @@ def initialize_layout():
                 target='_blank',
                 children=[
                     html.Button(
-                        id='download-button',
+                        id='button-download-series',
                         className='button',
                         type='button',
                         children=['Download time series of selected products']
+                    )
+                ]
+            ),
+            html.A(
+                id='export-product-table',
+                href=f'/download-product-table/',
+                target='_blank',
+                children=[
+                    html.Button(
+                        id='button-download-table',
+                        className='button',
+                        type='button',
+                        children=['Download product info table (All)']
                     )
                 ]
             ),

@@ -1,15 +1,10 @@
 from pathlib import Path
-from urllib.parse import parse_qs
 
 import pandas as pd
 
-from bs4 import BeautifulSoup as BS
-
-import requests
-
 from config import BBS_URL, PARAMS, PARSER
+from config import brdBltNo_start, brdBltNo_latest
 
-import config
 import downloader
 import preprocessing
 import updater
@@ -119,35 +114,9 @@ def read_data(data_path):
     return df_product_price, df_compound
 
 
-def get_top_brdBltNo():
-    params = {
-        'pgmid':PARAMS['pgmid']
-    }
-
-    r = requests.get(BBS_URL, params=params)
-
-    html_BS = BS(r.text, PARSER)
-
-    top_title_a_BS = (
-        html_BS
-        .select('table.tbl_list')[0]
-        .select('tr > td > a')[0]
-    )
-
-    brdBltNo = (
-        parse_qs(top_title_a_BS['href'][1:])
-        ['brdBltNo'][0]
-    )
-
-    return brdBltNo
-
-
 def check_data_raw():
     if not Path('data-raw').is_dir():
-        brdBltNo_start = int(config.brdBltNo_start)
-        brdBltNo_end   = int(get_top_brdBltNo())
-
-        for brdBltNo in range(brdBltNo_start, brdBltNo_end+1):
+        for brdBltNo in range(brdBltNo_start, brdBltNo_latest+1):
             downloader.download(str(brdBltNo))
 
         preprocessing.initialize()

@@ -1,4 +1,9 @@
 from pathlib import Path
+from urllib.parse import parse_qs
+
+from bs4 import BeautifulSoup as BS
+import requests
+
 
 
 META_TAGS = [
@@ -32,8 +37,6 @@ PARAMS = {
     'pageIndex':1
 }
 
-# 2016-07-01
-brdBltNo_start = 1576
 
 data_raw_dir = Path('data-raw')
 data_cleaned_dir = Path('data-cleaned')
@@ -43,3 +46,31 @@ data_product_path  = Path(data_cleaned_dir, 'product.pickle')
 data_price_path    = Path(data_cleaned_dir, 'price.pickle')
 
 MAX_NUMBER_OF_MONTHS = 60
+
+# 2016-07-01
+brdBltNo_start = 1576
+
+def get_brdBltNo_latest():
+    params = {
+        'pgmid':PARAMS['pgmid']
+    }
+
+    r = requests.get(BBS_URL, params=params)
+
+    html_BS = BS(r.text, PARSER)
+
+    top_title_a_BS = (
+        html_BS
+        .select('table.tbl_list')[0]
+        .select('tr > td > a')[0]
+    )
+
+    brdBltNo = (
+        parse_qs(top_title_a_BS['href'][1:])
+        ['brdBltNo'][0]
+    )
+
+    return brdBltNo
+
+
+brdBltNo_latest = get_brdBltNo_latest()

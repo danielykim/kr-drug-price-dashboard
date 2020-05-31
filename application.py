@@ -20,7 +20,7 @@ import index_string
 application = Flask(__name__)
 
 @application.route('/download-series/')
-def download_data():
+def download_series():
     product_code_list = request.args.get('product-code-list').split('|')
 
     strIO = io.BytesIO()
@@ -43,6 +43,33 @@ def download_data():
         strIO.write(b'\n')
 
         binary_data = strIO.getvalue()
+
+    strIO.seek(0)
+
+    return send_file(
+        strIO,
+        attachment_filename=filename,
+        as_attachment=True
+    )
+
+
+@application.route('/download-product-table/')
+def download_product_table():
+    strIO = io.BytesIO()
+
+    df = layout.df_product
+
+    max_date = layout.df_price.Date.max()
+
+    excel_writer = pd.ExcelWriter(strIO, engine="xlsxwriter")
+
+    df.to_excel(excel_writer, sheet_name="Sheet1")
+
+    excel_writer.save()
+
+    binary_data = strIO.getvalue()
+
+    filename = f'product-table-{max_date}.xlsx'
 
     strIO.seek(0)
 
