@@ -67,5 +67,5 @@ Daniel Y Kim, PhD
 
 ## 문의
 김영호 박사
-- [LinkedIn](https://www.linkedin.com/in/danielyounghokim/)
-- [Homepage](http://danielykim.me/)
+- [링크드인](https://www.linkedin.com/in/danielyounghokim/)
+- [홈페이지](http://danielykim.me/)
