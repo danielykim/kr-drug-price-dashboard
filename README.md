@@ -19,3 +19,14 @@ $ python application.py
 ```
 
 This code was originally written for Python 3.6+.
+
+
+## Data Manipulation
+Data Source: [건강보험심사평가원 약제급여목록표](https://www.hira.or.kr/bbsDummy.do?pgmid=HIRAA030014050000)
+
+Data Period
+- Start: 2016-07-01
+  - Produce code was massively revised back then
+  - For your information, data is monthly updated even though it looks a date
+- End: the latest posting in the source
+  - This code automatically detect the latest posting, and download it.
