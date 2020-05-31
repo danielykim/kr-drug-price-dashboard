@@ -92,7 +92,7 @@ dashapp = dash.Dash(
 
 dashapp.index_string = index_string.index_string
 
-dashapp.title = 'KR Drug Price Dashboard'
+dashapp.title = 'KR Drug Price Dashboard | 대한민국 약 가격 변동 시각화'
 dashapp.layout = layout.layout
 
 # https://dash.plotly.com/dash-core-components/dropdown

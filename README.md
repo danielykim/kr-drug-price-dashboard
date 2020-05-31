@@ -2,7 +2,7 @@
 This repository contains the following modules:
 - South Korea drug price data manipulation
 - [Dashboard](http://kr-drug-price-dashboard.eba-p9n9y8af.ap-northeast-2.elasticbeanstalk.com/). Feel free to try it.
-  - Drug price's time series in South Korea (60 months at most)
+  - Drug price time series in South Korea (60 months at most)
   - Drug information
 
 

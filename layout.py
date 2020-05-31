@@ -127,6 +127,8 @@ def initialize_layout():
 
     layout = [
         html.Div(id='myContent', className='container', children=[
+            html.H1('Drug Price Time Series in South Korea | 대한민국 약 가격 변동 시각화'),
+            html.Br(),
             html.H2('Choose products'),
             dcc.Dropdown(
                 id='product-selector',
