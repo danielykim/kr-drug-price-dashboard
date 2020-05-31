@@ -1,8 +1,9 @@
 .ipynb_checkpoints
 .idea
 __pycache__
-asset/__pycache__
 *.ipynb
+data-raw
+data-cleaned
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
