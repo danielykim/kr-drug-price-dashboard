@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as BS
 import requests
 
 from config import BBS_URL, DOWNLOAD_URL, PARAMS, PARSER
+from config import data_raw_dir
 
 import config
 import tools

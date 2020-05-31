@@ -146,7 +146,7 @@ def initialize_layout():
                         id='download-button',
                         className='button',
                         type='button',
-                        children=['Download time series for selected products']
+                        children=['Download time series of selected products']
                     )
                 ]
             ),
