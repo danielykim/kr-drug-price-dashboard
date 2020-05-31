@@ -76,7 +76,7 @@ def draw_time_series_trace(product_code):
 
 
 def draw_price_time_series(product_code_list):
-    title_text = f"Drug Price Time Series (as of {max_date})"
+    title_text = f"Drug Price Time Series 약 가격 시계열 (as of {max_date})"
 
     if type(product_code_list) is list and len(product_code_list) > 0:
         fig = go.Figure([
@@ -129,7 +129,7 @@ def initialize_layout():
         html.Div(id='myContent', className='container', children=[
             html.H1('Drug Price Time Series in South Korea | 대한민국 약 가격 변동 시각화'),
             html.Br(),
-            html.H2('Choose products'),
+            html.H2('Choose products | 제품명을 선택하세요'),
             dcc.Dropdown(
                 id='product-selector',
                 # options=product_selector_options,
