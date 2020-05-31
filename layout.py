@@ -38,6 +38,8 @@ df_price = (
     pd.read_pickle(data_price_path)
 )
 
+max_date = df_price.Date.max()
+
 product_name_code_list = (
     df_product
     .reset_index()
@@ -74,6 +76,8 @@ def draw_time_series_trace(product_code):
 
 
 def draw_price_time_series(product_code_list):
+    title_text = f"Drug Price Time Series (as of {max_date})"
+
     if type(product_code_list) is list and len(product_code_list) > 0:
         fig = go.Figure([
             draw_time_series_trace(product_code)
@@ -83,9 +87,7 @@ def draw_price_time_series(product_code_list):
     else:
         fig = go.Figure()
 
-        fig.update_layout(
-            height=400,
-        )
+        title_text = f'{title_text} (Select products first)'
 
     fig.update_layout(
         xaxis=dict(
@@ -99,7 +101,7 @@ def draw_price_time_series(product_code_list):
             tickfont_size=14,
         ),
         title=dict(
-            text="Drug Price Time Series",
+            text=title_text,
             font=dict(size=20)
         ),
         height=400,

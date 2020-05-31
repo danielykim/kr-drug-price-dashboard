@@ -59,7 +59,7 @@ def download_product_table():
 
     df = layout.df_product
 
-    max_date = layout.df_price.Date.max()
+    max_date = layout.max_date
 
     excel_writer = pd.ExcelWriter(strIO, engine="xlsxwriter")
 
