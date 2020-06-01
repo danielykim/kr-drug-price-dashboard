@@ -44,7 +44,7 @@ Daniel Y Kim, PhD
 
 
 ## 소개
-이 저장소에서 관리하는 코드는 크게 2가지 역할을 합니다:
+이 저장소에서 관리하는 코드는 2가지 역할을 합니다:
 - `건강보험심사평가원 (HIRA)`에서 매월 제공하는 대한민국 약 가격 데이터 자동 수집 및 처리
 - [대쉬보드](http://kr-drug-price-dashboard.eba-p9n9y8af.ap-northeast-2.elasticbeanstalk.com/)를 이용한 데이터 시각화
   - 대한민국 약 가격 변동 시계열(최대 60개월)
