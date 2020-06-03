@@ -38,6 +38,8 @@ df_price = (
     pd.read_pickle(data_price_path)
 )
 
+number_of_products = len(df_product.reset_index().제품코드.unique())
+
 max_date = df_price.Date.max()
 
 product_name_code_list = (
@@ -129,7 +131,7 @@ def initialize_layout():
         html.Div(id='myContent', className='container', children=[
             html.H1('Drug Price Time Series in South Korea | 대한민국 약 가격 변동 시각화'),
             html.Br(),
-            html.H2('Choose products | 제품명을 선택하세요'),
+            html.H2(f'Choose products | 제품명을 선택하세요 ({max_date} 현재 {number_of_products}개 제품 선택 가능)'),
             dcc.Dropdown(
                 id='product-selector',
                 # options=product_selector_options,
