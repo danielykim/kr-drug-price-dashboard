@@ -3,7 +3,7 @@ import io
 import pandas as pd
 import dash
 
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
 from flask import Flask, send_file, request
@@ -92,24 +92,8 @@ dashapp = dash.Dash(
 
 dashapp.index_string = index_string.index_string
 
-dashapp.title = 'KR Drug Price Dashboard | 대한민국 약 가격 변동 시각화'
+dashapp.title = 'KR Drug Upper-bound Price Dashboard | 대한민국 약품 상한 가격 변동 시각화'
 dashapp.layout = layout.layout
-
-# https://dash.plotly.com/dash-core-components/dropdown
-@dashapp.callback(
-    dash.dependencies.Output("product-selector", "options"),
-    [dash.dependencies.Input("product-selector", "search_value")],
-    [dash.dependencies.State("product-selector", "value")],
-)
-def update_multi_options(search_value, value):
-    if not search_value:
-        raise PreventUpdate
-
-    return [
-        o
-        for o in layout.product_selector_options
-        if search_value in o["label"] or o["value"] in (value or [])
-    ]
 
 
 @dashapp.callback(
@@ -119,10 +103,11 @@ def update_multi_options(search_value, value):
         Output('export-series', 'href'),
     ],
     [
-        Input('product-selector', 'value'),
+        Input("product-selector", "value"),
     ]
 )
 def update(product_code_list):
+
     fig = layout.draw_price_time_series(product_code_list)
     tab = layout.get_records(product_code_list)
 
@@ -134,6 +119,25 @@ def update(product_code_list):
     href = f'/download-series/?product-code-list={joined_code_list}'
 
     return fig, tab, href
+
+
+# https://dash.plotly.com/dash-core-components/dropdown
+@dashapp.callback(
+    Output("product-selector", "options"),
+    [Input("product-selector", "search_value")],
+    [State("product-selector", "value")],
+)
+def update_multi_options(search_value, value):
+    if not search_value:
+        raise PreventUpdate
+
+    options = [
+        o
+        for o in layout.product_selector_options
+        if search_value in o["label"] or o["value"] in (value or [])
+    ]
+
+    return options
 
 
 

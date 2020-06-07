@@ -78,7 +78,7 @@ def draw_time_series_trace(product_code):
 
 
 def draw_price_time_series(product_code_list):
-    title_text = f"Drug Price Time Series 약품 상한 가격 시계열 (as of {max_date})"
+    title_text = f"Drug Upper-bound Price Time Series 약품 상한 가격 시계열 (as of {max_date})"
 
     if type(product_code_list) is list and len(product_code_list) > 0:
         fig = go.Figure([
@@ -124,18 +124,21 @@ def get_records(product_code_list):
 def initialize_layout():
     # 키트루다주(펨브롤리주맙,유전자재조합)_(0.1g/4mL)
     # 옵디보주100mg(니볼루맙,유전자재조합)_(0.1g/10mL)
-    # initial_product_codes = ['655501901', '050400011']
-    initial_product_codes = []
+    initial_product_codes = ['655501901', '050400011']
+    initial_options = [
+        o for o in product_selector_options
+        if o['value'] in initial_product_codes
+    ]
 
     layout = [
         html.Div(id='myContent', className='container', children=[
-            html.H1('Drug Price Time Series in South Korea | 대한민국 약품 가격 변동 시각화'),
+            html.H1('Drug Upper-bound Price Time Series in South Korea | 대한민국 약품 상한 가격 변동 시각화'),
             html.Br(),
             html.H2(f'Choose products | 제품명을 선택하세요 ({number_of_products}개 제품 선택 가능: {max_date} 데이터 기준)'),
             dcc.Dropdown(
                 id='product-selector',
-                # options=product_selector_options,
-                # value=initial_product_codes,
+                options=initial_options,
+                value=initial_product_codes,
                 multi=True,
                 placeholder="Type and select products: For example, 키트루다, 옵디보, etc.",
             ),
