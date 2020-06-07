@@ -78,7 +78,7 @@ def draw_time_series_trace(product_code):
 
 
 def draw_price_time_series(product_code_list):
-    title_text = f"Drug Price Time Series 약 가격 시계열 (as of {max_date})"
+    title_text = f"Drug Price Time Series 약품 상한 가격 시계열 (as of {max_date})"
 
     if type(product_code_list) is list and len(product_code_list) > 0:
         fig = go.Figure([
@@ -98,7 +98,7 @@ def draw_price_time_series(product_code_list):
             tickfont_size=14,
         ),
         yaxis=dict(
-            title='Drug Price (KRW)',
+            title='Drug Upper-bound Price (KRW)',
             titlefont_size=16,
             tickfont_size=14,
         ),
@@ -129,9 +129,9 @@ def initialize_layout():
 
     layout = [
         html.Div(id='myContent', className='container', children=[
-            html.H1('Drug Price Time Series in South Korea | 대한민국 약 가격 변동 시각화'),
+            html.H1('Drug Price Time Series in South Korea | 대한민국 약품 가격 변동 시각화'),
             html.Br(),
-            html.H2(f'Choose products | 제품명을 선택하세요 ({max_date} 현재 {number_of_products}개 제품 선택 가능)'),
+            html.H2(f'Choose products | 제품명을 선택하세요 ({number_of_products}개 제품 선택 가능: {max_date} 데이터 기준)'),
             dcc.Dropdown(
                 id='product-selector',
                 # options=product_selector_options,
