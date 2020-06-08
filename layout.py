@@ -124,7 +124,8 @@ def get_records(product_code_list):
 def initialize_layout():
     # 키트루다주(펨브롤리주맙,유전자재조합)_(0.1g/4mL)
     # 옵디보주100mg(니볼루맙,유전자재조합)_(0.1g/10mL)
-    initial_product_codes = ['655501901', '050400011']
+    # 티쎈트릭주(아테졸리주맙)_(1.2g/20mL)
+    initial_product_codes = ['655501901', '050400011', '645001441']
     initial_options = [
         o for o in product_selector_options
         if o['value'] in initial_product_codes
@@ -140,7 +141,7 @@ def initialize_layout():
                 options=initial_options,
                 value=initial_product_codes,
                 multi=True,
-                placeholder="Type and select products: For example, 키트루다, 옵디보, etc.",
+                placeholder="Type and select products: For example, 키트루다, 옵디보, 티쎈트릭, etc.",
             ),
             dcc.Graph(
                 id='price-time-series',
