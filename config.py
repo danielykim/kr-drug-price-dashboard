@@ -65,7 +65,7 @@ def get_brdBltNo_latest():
         .select('tr > td > a')[0]
     )
 
-    brdBltNo = (
+    brdBltNo = int(
         parse_qs(top_title_a_BS['href'][1:])
         ['brdBltNo'][0]
     )

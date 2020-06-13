@@ -98,6 +98,8 @@ def update_tables():
         df_price.to_pickle(data_price_path)
 
         print('Tables have been updated.')
+    else:
+        tools.check_data_raw()
 
 
 
