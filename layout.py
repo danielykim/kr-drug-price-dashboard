@@ -46,14 +46,14 @@ product_name_code_list = (
     df_product
     .reset_index()
     .loc[lambda x: x.제품코드.isin(df_price.reset_index().제품코드.unique())]
-    [['제품명', '제품코드']]
+    [['제품명', '제품코드', '주성분코드']]
     .sort_values(by='제품명')
     .values
 )
 
 product_selector_options = [
-    {'label':name, 'value':code}
-    for name, code in product_name_code_list
+    {'label':f'{name} | {compound}', 'value':code}
+    for name, code, compound in product_name_code_list
 ]
 
 
