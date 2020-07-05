@@ -54,7 +54,7 @@ def read_data(data_path):
         '식약분류',
         '주성분코드',
         '제품코드',
-        '목록정비전코드',
+        # '목록정비전코드',
 
         '제품명',
         '업체명',
@@ -69,7 +69,10 @@ def read_data(data_path):
     df = (
         pd.read_excel(
             data_path,
-            dtype={'주성분코드':str, '목록정비전코드':str}
+            dtype={
+                '주성분코드':str,
+                # '목록정비전코드':str
+            }
         )
         .rename({
             '전일':'전문/일반',
